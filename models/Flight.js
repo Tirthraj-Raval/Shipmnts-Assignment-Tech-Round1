@@ -5,7 +5,7 @@ const flightSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    flightNumber : {
+    flight_number : {
         type: String,
         required: true
     },
@@ -17,8 +17,8 @@ const flightSchema = new mongoose.Schema({
     },
     status : {
         type: String,
-        enum: ['Scheduled', 'Departed', 'Arrived'],
-        default: 'Scheduled'
+        enum: ['In-transit', 'landed'],
+        default: 'In-transit'
     },
 
     shipment: {
