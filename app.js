@@ -5,6 +5,7 @@ const connectToDB = require("./config/db");
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 const shipmentRoutes = require("./routes/shipmentRoutes");
+const flightRoutes = require("./routes/flightRoutes");
 
 const app = express();
 connectToDB();
@@ -24,7 +25,7 @@ app.use(session({
 
 //Shipments Routes
 app.use('/api/shipments', shipmentRoutes);
-
+app.use('/api/flights', flightRoutes)
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })

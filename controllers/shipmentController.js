@@ -27,9 +27,22 @@ exports.addHop = async (req, res) => {
     if(!shipments){
         console.error("No shipments found");
     }
-    shipments.hops.push(previous_hop);
-    shipments.hops.push( new_hop);
-    shipments.hops.push(next_hop)
+
+    if(shipments.length == 0){
+        shipments.hops.location.push(previous_hop);
+        shipments.hops.location.push(new_hop);
+        shipments.hops.location.push(next_hop);
+    }
+    for(let i=0; i<shipments.hops.length; i++){
+        if (previous_hop === shipments.hops[i]){
+            shipments.hops.location.push(shipments.hops[i])
+            shipments.hops.location.push(new_hop)
+        }
+        else{
+            shipments.hops.push(shipments.hops[i])
+        }
+
+    }
     await shipments.save();
     res.status(201).json(shipments)
 

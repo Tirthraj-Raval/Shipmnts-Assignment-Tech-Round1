@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const hopsSchema = new mongoose.Schema({
+    previous_hop: {
+        type: String
+    },
     location: [{
         type: String
     }]
@@ -19,10 +22,7 @@ const shipmentsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    hops: [{
-        type: String,
-        
-    }],
+    hops: [hopsSchema],
 
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
