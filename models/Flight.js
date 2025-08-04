@@ -20,6 +20,7 @@ const flightSchema = new mongoose.Schema({
         enum: ['Scheduled', 'Departed', 'Arrived'],
         default: 'Scheduled'
     },
+
     shipment: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Shipment'

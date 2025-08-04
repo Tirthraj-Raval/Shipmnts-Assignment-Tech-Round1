@@ -17,3 +17,9 @@ exports.addFlight = async (req, res) => {
     res.status(200).json(flight);
 
 }
+
+exports.getFlightStatus = async(req, res) => {
+    const {flightNumber} = req.params;
+    const flight = await Flight.findOne({flightNumber});
+    res.status(201).json(flight.status);
+}
