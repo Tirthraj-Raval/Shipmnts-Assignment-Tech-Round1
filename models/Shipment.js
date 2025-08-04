@@ -19,7 +19,10 @@ const shipmentsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    hops: [],
+    hops: [{
+        type: String,
+        
+    }],
 
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
